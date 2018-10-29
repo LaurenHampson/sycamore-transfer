@@ -1,4 +1,4 @@
 # sycamore-transfer
 CSCI 201 Final Project - Sycamore Transfer
 
-Developed by @theishah, @tommyacin (insert yourself here)
+Developed by @theishah, @tommyacin @zanedurante (insert yourself here)
