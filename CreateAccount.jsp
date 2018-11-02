@@ -4,53 +4,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create a new StyleTransfer Account</title>
-
-<style>
-	body
-	{
-		background-color: #FFEBCD;			
-	
-	}
-	
-	#sycamore
-	{
-		text-align: center;
-		color: orange;
-		font-family: Impact;
-		font-size: 75px;
-	}
-	
-	#main
-	{
-		text-align: center;
-		color: balck;
-		font-family: Helvetica;
-		font-size:55px;
-	}
-
-	input
-	{
-		align:center;
-		width: 30%;
-		text-align: center;
-		color: balck;
-		font-family: Helvetica;
-		font-size:55px;
-		padding: 5px 5px;
-		margin: 8px 0;
-		box-sizing: border-box;
-	}
-
-</style>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<title>Create a New Account</title>
 
 </head>
 <body>
-	<div id= "sycamore">
+	<div id= "frontpage">
 		Sycamore Transfer
 	</div>
 	<br ></br>
-	<div id ="main"> Create New Account <br></br>
+	<div id ="main"> Create New Account <br />
+	<p>Password must be 8 characters or longer</p>
 	<form name="myform" method="GET" action="CreateAccount.jsp" onsubmit="return validate();">
       <input type="text" name="username" placeholder="Username"required/><br>
       <input type="text" name="email" placeholder = "Email"required/><br>

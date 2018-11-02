@@ -32,7 +32,36 @@ body{
 	font-size: 18px;
 }
 
-p{
+#myimages p{
 	font: 100% Lucida Sans, Verdana;
 	color: #E26B2E;
 }
+
+#sycamore
+	{
+		text-align: center;
+		color: orange;
+		font-family: Impact;
+		font-size: 75px;
+	}
+	
+	#main
+	{
+		text-align: center;
+		color: balck;
+		font-family: Helvetica;
+		font-size:55px;
+	}
+
+	#main input
+	{
+		width: 30%;
+		color: black;
+		font-family: Verdana;
+		font-size:20px;
+		padding: 5px 5px;
+		box-sizing: border-box;
+	}
+	#main p{
+		font-size:20px;
+	}
