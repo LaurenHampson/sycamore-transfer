@@ -24,6 +24,16 @@ body{
 	color: #E26B2E;
 }
 
+#transferpage{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 690px;
+	font-size: 80px;
+	color: #E26B2E;
+}
+
 #login input{
 	margin-left: auto; 
 	margin-right: auto; 
@@ -37,31 +47,55 @@ body{
 	color: #E26B2E;
 }
 
-#sycamore
-	{
-		text-align: center;
-		color: orange;
-		font-family: Impact;
-		font-size: 75px;
-	}
-	
-	#main
-	{
-		text-align: center;
-		color: balck;
-		font-family: Helvetica;
-		font-size:55px;
-	}
+#sycamore{
+	text-align: center;
+	color: orange;
+	font-family: Impact;
+	font-size: 75px;
+}
 
-	#main input
-	{
-		width: 30%;
-		color: black;
-		font-family: Verdana;
-		font-size:20px;
-		padding: 5px 5px;
-		box-sizing: border-box;
-	}
-	#main p{
-		font-size:20px;
-	}
+#main{
+	text-align: center;
+	color: balck;
+	font-family: Helvetica;
+	font-size:55px;
+}
+
+#main input{
+	width: 30%;
+	color: black;
+	font-family: Verdana;
+	font-size:20px;
+	padding: 5px 5px;
+	box-sizing: border-box;
+}
+
+#main p{
+	font-size:20px;
+}
+
+#test{
+	width:60%;
+	height:370px;
+	margin-left:140px;
+	display:inline-block;
+	background-color: orange;
+}
+#uploadbox{
+	width:49.5%;
+	display:inline-block;
+	position: static;
+}
+
+#stylebox{
+	margin:auto;
+	display:inline-block; 
+	position:fixed; 
+	width:49.5%;
+}
+
+#uploadform{
+	position:static;
+	margin-left:195px;
+	display:inline-block;
+}
