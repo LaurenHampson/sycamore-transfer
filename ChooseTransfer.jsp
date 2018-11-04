@@ -42,73 +42,44 @@
 		</script>
 	</head>
 	<body>
+		<div class="topnav">
+		  <a href="./about.jsp">About</a>
+		  <a href="./profile.jsp">My Pictures</a>
+		  <a href="./Feed.jsp">Global Feed</a>
+		  <a href="./ChooseTransfer.jsp">Create a Style Transferred Image</a>
+		  <a id="signout" href="./Login.jsp">Sign Out</a>
+		</div>
 		<h1 id="transferpage" style="font-family:Pacifico;">Pick Your Transfer</h1>
 		<div id="boxes" style="width:100%;">
 			<div id="uploadbox">
 				<img id="test" src="" alt="NO Image Selected">
+				<div id="uploadform">
+					<form name="uploadform" method="post" enctype="multipart/form-data">
+					    Select image to upload:
+					    <input type="file" id="pic" accept="image/*" onchange="onUploadClick();">
+					</form>
+				</div>
 			</div>
-			
-			<div id="stylebox">
-				<div id="stylerow" style="width:100%; ">
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-				</div>
-				<br />
-				<br />
-				<div id="stylerow" style="width:100%; ">
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-				</div>
-				<br />
-				<br />
-				<div id="stylerow" style="width:100%; ">
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
-					<div id="styleobj" style="align:middle; width:24%; margin:0px; display:inline-block;">
-				  		<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					</div>
+			<div id="stylebox" style="width: 49.5%; float:left;">
+				<div id ="styleset">
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./titleimage1.jpg');"><img height=100px width=100px src="./titleimage1.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
 				</div>
 			</div>
 		</div>
-		<div id="uploadform">
-			<form name="uploadform" method="post" enctype="multipart/form-data">
-			    Select image to upload:
-			    <input type="file" id="pic" accept="image/*" onchange="onUploadClick();">
-			    <br />
-			    
-			</form>
-		</div>
 		<br />
 		<br />
 		<br />
-		<button name="submit" style="width:100px; background-color:#E26B2E; margin-left:645px; width:150px; color:white; font-size:25px; font-family:Pacifico; height:50px;" onclick="Submit();" >Transfer</button>
-		
+		<button id="transferbutton" name="submit" onclick="Submit();" >Transfer</button>
 	</body>
 </html>

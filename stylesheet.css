@@ -24,6 +24,16 @@ body{
 	color: #E26B2E;
 }
 
+#feedpage{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 500px;
+	font-size: 80px;
+	color: #E26B2E;
+}
+
 #transferpage{
 	display: block;
     margin-left: auto;
@@ -42,7 +52,7 @@ body{
 	font-size: 18px;
 }
 
-#myimages p{
+p{
 	font: 100% Lucida Sans, Verdana;
 	color: #E26B2E;
 }
@@ -75,27 +85,125 @@ body{
 }
 
 #test{
-	width:60%;
-	height:370px;
-	margin-left:140px;
+	width:350px;
+	height:350px;
+	margin-left:28%;
 	display:inline-block;
 	background-color: orange;
 }
 #uploadbox{
+	float:left;
 	width:49.5%;
-	display:inline-block;
-	position: static;
+	height:372px;
 }
 
-#stylebox{
-	margin:auto;
-	display:inline-block; 
-	position:fixed; 
-	width:49.5%;
+#styleset{
+	width:80%;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:space-evenly;
 }
 
-#uploadform{
-	position:static;
-	margin-left:195px;
-	display:inline-block;
+#styleset a{
+	margin: 10px;;
 }
+
+#uploadform {
+	margin-left:30.5%;
+}
+
+#transferbutton{
+	background-color:#E26B2E; 
+	width:150px; 
+	color:white; 
+	font-size:25px; 
+	font-family:Pacifico;
+	height:50px; 
+	margin-left: 45%;
+	margin-right: 45%;
+	margin-top: 40px;
+}
+
+@media screen and (max-width:1229px) {
+    #uploadbox {
+        width: 100%;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-evenly;
+        flex-direction:column;
+    }
+    #stylebox {
+    	float:none;
+        width: 100%;
+    }
+    #test, #uploadform{
+    	margin:auto;
+    }
+    #styleset{
+    	width: 100%;
+    }
+    .topnav a{
+    	float: center;
+    }
+}
+
+.topnav {
+	font-family:Pacifico;
+    overflow: hidden;
+    background-color: #E26B2E;
+}
+
+.topnav #signout{
+	float:right;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: #f2f2f2;
+    color: #E26B2E;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+    width: 7.4%;
+}
+
+/* Middle column */
+.column.middle {
+    width: 80%;
+}
+
+.footer {
+    width: 100%;
+}
+
+#about .column.side {
+    width: 27.1%;
+}
+
+/* Middle column */
+#about .column.middle {
+    width: 70%;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
