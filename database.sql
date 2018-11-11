@@ -10,7 +10,7 @@ CREATE TABLE Users (
 create table Images (
     imageID INT(11) primary key auto_increment,
     username VARCHAR(50) NOT NULL,
-    foreign key fkUsername (username) references Users(username)
+    foreign key fkUsername (username) references Users(username),
     old_image VARCHAR(100) NOT NULL,
     new_image VARCHAR(100) NOT NULL,
     creationTime TIMESTAMP NOT NULL
