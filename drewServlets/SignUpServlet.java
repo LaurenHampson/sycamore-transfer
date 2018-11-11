@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -127,8 +128,12 @@ public class SignUpServlet extends HttpServlet {
 		//return the error message
 		//if no error, string returned is "no_error"
 		//else, errors are "email_taken", "username_taken", or "email_username_taken"
-		response.setCharacterEncoding("UTF-8");
-	    response.getWriter().write(error_msg);
+		String nextPage = "/about.jsp";
+		if(!error_msg.equals("no_error")) {
+			request.setAttribute("error", error_msg);
+		}
+		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextPage);
+		dispatch.forward(request,response);
 	}
 
 }
