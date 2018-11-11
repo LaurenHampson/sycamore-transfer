@@ -55,8 +55,9 @@ public class SignUpServlet extends HttpServlet {
 		Statement sqlStatement = null;
 		ResultSet rs = null;
 		try {
+			System.out.println("heyo");
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=password&useSSL=false");
 			sqlStatement = conn.createStatement();
 			
 			//check is email is already in database
@@ -66,7 +67,7 @@ public class SignUpServlet extends HttpServlet {
 				System.out.println("This email is already in the database");
 				error_msg = "email_taken";			
 			}
-				
+			System.out.println("heyo");	
 			//check if username is taken
 			rs = sqlStatement.executeQuery("SELECT * from Users where username='" + username + "'");
 			if (rs.next()) {
@@ -78,7 +79,8 @@ public class SignUpServlet extends HttpServlet {
 					error_msg = "username_taken";	
 				}			
 			}
-			
+			System.out.println(error_msg);
+			System.out.println(email + username);
 			//if no error, proceed in creating user
 			if (error_msg.equals("no_error")) {
 				//salt the password for extra security
@@ -102,13 +104,14 @@ public class SignUpServlet extends HttpServlet {
 						+ email + "', '"
 						+ username + "', '"
 						+ password_hash + "');";
+				System.out.println(query);
 				sqlStatement.executeUpdate(query);
 			}
 			
 		} catch (SQLException sqle) {
-			System.out.println (sqle.getMessage());
+			System.out.println ("sqle: " + sqle.getMessage());
 		} catch (ClassNotFoundException cnfe) {
-			System.out.println (cnfe.getMessage());
+			System.out.println ("cnfe: " + cnfe.getMessage());
 		} finally {
 			try {
 				if (rs != null) { 
