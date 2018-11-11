@@ -15,3 +15,9 @@ create table Images (
     new_image VARCHAR(100) NOT NULL,
     creationTime TIMESTAMP NOT NULL
 );
+
+create table ImageLikes (
+    imageID INT(11) NOT NULL,
+    foreign key fkImageID (imageID) references Images(imageID),
+    userWhoLikedImage VARCHAR(100) NOT NULL
+);
