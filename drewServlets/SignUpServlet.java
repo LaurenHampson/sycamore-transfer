@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
 /**
@@ -49,6 +50,7 @@ public class SignUpServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String error_msg = "no_error";
+		HttpSession session = request.getSession();
 		
 		//interact with database
 		Connection conn = null;
@@ -135,6 +137,9 @@ public class SignUpServlet extends HttpServlet {
 		if(!error_msg.equals("no_error")) {
 			request.setAttribute("error", error_msg);
 			nextPage = "/CreateAccount.jsp";
+		} else {
+			session.setAttribute("UserName", username);
+			session.setAttribute("Email", email);
 		}
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextPage);
 		dispatch.forward(request,response);

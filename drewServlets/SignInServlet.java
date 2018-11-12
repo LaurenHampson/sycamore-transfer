@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
 /**
@@ -48,8 +49,9 @@ public class SignInServlet extends HttpServlet {
 		//get username and password
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String email = null;
 		String error_msg = "no_error";
-		
+		HttpSession session = request.getSession();
 		//interact with database
 		Connection conn = null;
 		Statement sqlStatement = null;
@@ -82,6 +84,8 @@ public class SignInServlet extends HttpServlet {
 				//user is not in database
 				System.out.println("This username / password combo is not in the database");
 				error_msg = "account_not_found";			
+			} else {
+				email = rs.getString(1);
 			}
 			
 		} catch (SQLException sqle) {
@@ -110,6 +114,9 @@ public class SignInServlet extends HttpServlet {
 		if(!error_msg.equals("no_error")) {
 			nextPage = "/Login.jsp";
 			request.setAttribute("error", error_msg);
+		} else {
+			session.setAttribute("UserName", username);
+			session.setAttribute("Email", email);
 		}
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextPage);
 		dispatch.forward(request,response);
