@@ -4,6 +4,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,11 +33,14 @@ public class PythonServlet extends HttpServlet
 		System.out.println(style);
 		System.out.println(input);
 		System.out.println(output);
-		//String email = (String)request.getSession().getAttribute("Email");
-		String email = "kousheyk@usc.edu";
-		
+		String email = (String)request.getSession().getAttribute("Email");
+		//String email = "kousheyk@usc.edu";
+		System.out.println("email: " + email);
 		PythonThread p = new PythonThread(input, style, output, email);
 		p.start();
+		
+		String username = (String)request.getSession().getAttribute("UserName");
+		insertDB(username, input, output);
 	}
 	
 	/*public static void main(String[] args) 
@@ -43,6 +51,43 @@ public class PythonServlet extends HttpServlet
 		PythonThread p = new PythonThread(input, style, output, "tommyacin@hotmail.com");
 		p.start();
 	}*/
+	
+	public void insertDB (String username, String input, String output)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UserProfiles?user=root&password=root&useSSL=false");
+			ps = conn.prepareStatement("INSERT IGNORE INTO Images (username, old_image, new_image, creationTime) values (?, ?, ?, ?);");
+			ps.setString(1,  username);
+			ps.setString(2,  input);
+			ps.setString(3,  output);
+			ps.setTimestamp(4, new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
+			ps.execute();
+		}
+		catch(SQLException sqle)
+		{
+			System.out.println("sqle: " + sqle.getMessage());
+		}
+		catch(ClassNotFoundException cnfe)
+		{
+			System.out.println("cnfe: " + cnfe.getMessage());
+		}
+		finally
+		{
+			try
+			{
+				if (conn != null)
+					conn.close();
+			}
+			catch(SQLException sqle)
+			{
+				System.out.println("sqle closing conn: " + sqle.getMessage());
+			}
+		}
+	}
 }
 
 class PythonThread extends Thread
