@@ -134,6 +134,7 @@ public class SignUpServlet extends HttpServlet {
 		String nextPage = "/about.jsp";
 		if(!error_msg.equals("no_error")) {
 			request.setAttribute("error", error_msg);
+			nextPage = "/CreateAccount.jsp";
 		}
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextPage);
 		dispatch.forward(request,response);

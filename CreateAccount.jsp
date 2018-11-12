@@ -5,6 +5,12 @@
 	String error = (String) request.getAttribute("error");
 	if(error == null){
 		error = "";	
+	} else if(error == "email_username_taken"){
+		error = "There already exists an account with this username and email. Please enter different ones.";
+	} else if(error == "email_taken"){
+		error = "There already exists an account with this email. Please enter a different one.";
+	} else if(error == "username_taken"){
+		error = "There already exists an account with this username. Please enter a different one.";
 	}
 %>
 <html>
@@ -20,7 +26,7 @@
 		<br ></br>
 		<div id ="main"> Create New Account <br />
 		<p>Password must be 8 characters or longer</p>
-		<strong><font color="red"><%= error %></font></strong>
+		<strong><font color="red" size="15px"><%= error %></font></strong>
 		<form name="myform" method="POST" action="SignUpServlet">
 	      <input type="text" name="username" placeholder="Username"required/><br>
 	      <input type="text" name="email" placeholder = "Email"required/><br>
