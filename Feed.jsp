@@ -32,7 +32,6 @@
 			var numLikes = photoPair.numLikes;
 			var likedByCurrUser = photoPair.likedByCurrUser;
 			var timediff = photoPair.timediff;
-			//var TimeStamp = photoPair.
 			//display photos to the page
 			if(likedByCurrUser){
 				document.getElementById("myimages").innerHTML += "<p>"+ username + " posted " + timediff + "<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imglink=" + originalPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imglink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><div id='likebutton" + imageID + "'><input id='unlike' type='submit' value='Unlike' style='height: 30px; width: 200px; ' onclick='Unlike(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span></div>";
