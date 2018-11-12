@@ -10,12 +10,19 @@
 	</head>
 	<script>
 	window.onload = function(){
-		var xhttp = new XMLHttpRequest();
-		var URL = "http://localhost:8080/Project/GetGlobalFeed";
-		xhttp.open("GET", URL, true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.addEventListener("load", updatePhotos);
-		xhttp.send();
+		
+		<% String email = (String) request.getSession().getAttribute("Email");%>
+		var emailstatus = "<%= email %>";
+		if(emailstatus == "guest"){
+			document.getElementById("myimages").innerHTML += "<p style='font-size:19.9px;'>Create an account to see other users' style-transferred pics!<p>";
+		} else {
+			var xhttp = new XMLHttpRequest();
+			var URL = "http://localhost:8080/Project/GetGlobalFeed";
+			xhttp.open("GET", URL, true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.addEventListener("load", updatePhotos);
+			xhttp.send();
+		}
 	}
 		
 	function updatePhotos() {

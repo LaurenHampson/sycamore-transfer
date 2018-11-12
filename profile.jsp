@@ -10,18 +10,25 @@
 	</head>
 	<script>
 	window.onload = function(){
-		var xhttp = new XMLHttpRequest();
-		var URL = "http://localhost:8080/Project/GetUserPhotos";
-		xhttp.open("GET", URL, true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.addEventListener("load", updatePhotos);
-		xhttp.send();
+		<% String email = (String) request.getSession().getAttribute("Email");%>
+		var emailstatus = "<%= email %>";
+		if(emailstatus == "guest"){
+			updatePhotosGuest();
+		} else {
+			var xhttp = new XMLHttpRequest();
+			var URL = "http://localhost:8080/Project/GetUserPhotos";
+			xhttp.open("GET", URL, true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.addEventListener("load", updatePhotos);
+			xhttp.send();
+		}
 	}
 		
 	function updatePhotos() {
 		var jsonStr = this.responseText;
 		var photoStream = JSON.parse(jsonStr);
 		var streamArray = photoStream.streamArray;
+		console.log(streamArray.length);
 		for (var i in streamArray) {
 			//extract data from stream object
 			var photoPair = streamArray[i];
@@ -38,6 +45,23 @@
 				document.getElementById("myimages").innerHTML += "<p>" + timediff + "<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imglink=" + originalPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imglink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><div id='likebutton" + imageID + "'><input id='like' type='submit' value='Like' style='height: 30px; width: 200px; ' onclick='Like(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span></div>";
 			}
 		}
+		if(streamArray.length == 0){
+			document.getElementById("myimages").innerHTML += "<center><p style='font-size=20px;'>You don't have any style-transferred images! Go to the 'Create a Style-Transferred Image' tab to make one now!<p></center>";
+		}
+	}
+	function updatePhotosGuest() {
+		<%@ page import="java.util.*" %>
+		<% ArrayList<String> profile = (ArrayList<String>) request.getSession().getAttribute("GuestList");
+		profile.add("./titleimage1.jpg");
+		profile.add("./titleimage2.png");
+			for(int i = 0; i < profile.size(); i+=2){
+				%> document.getElementById("myimages").innerHTML += "<p>Guest created this sometime ago<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imglink='<%= profile.get(i)%>'><img id = 'myimg1' src='<%= profile.get(i)%>' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imglink='<%= profile.get(i+1)%>'><img id = 'myimg2' src='<%= profile.get(i+1)%>' style='height: 300px; width: 300px;'></a></div><br />";<%
+			}
+			if(profile.size() == 0){
+				%> document.getElementById("myimages").innerHTML += "<center><p style='font-size=20px;'>You don't have any style-transferred images! Go to the 'Create a Style-Transferred Image' tab to make one now!<p></center>";<%
+			}
+		%>
+		
 	}
 	function Like(imageID){
 		var xhttp = new XMLHttpRequest();

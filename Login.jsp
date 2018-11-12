@@ -15,9 +15,22 @@
 		<title>Sycamore Transfer Login</title>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
 		<script>
+			window.onload = function(){
+				<%request.getSession().setAttribute("Email", null);
+				  request.getSession().setAttribute("UserName", null);
+				  request.getSession().setAttribute("GuestList", null);%>
+			}
 			function useGuestAccount(){
-				//PLACE DUMMY EMAIL AND GUEST IN SESSION
-				document.location.href = "./about.jsp"
+				<%@ page import="java.util.*" %>
+				<%request.getSession().setAttribute("Email", "guest");
+				  request.getSession().setAttribute("UserName", "GUEST");
+				  ArrayList<String> al = new ArrayList<String>();
+				  request.getSession().setAttribute("GuestList", al);
+				  %>
+				document.location.href = "./about.jsp";
+			}
+			function createAccount(){
+				document.location.href = "./CreateAccount.jsp";
 			}
 		</script>
 	</head>
@@ -34,6 +47,7 @@
 			<input type="password" name="password" placeholder="Password" required ><br /><br />
 			<input type="submit" style="width:206px;" value="Sign In">
 		</form>
+		<button name="submit" style="width:10%; margin-top:20px; margin-left: 45%; margin-right: 45%;" onclick="createAccount();" >Create Account</button>
 		<button name="submit" style="width:10%; margin-top:20px; margin-left: 45%; margin-right: 45%;" onclick="useGuestAccount();" >Use Guest Account</button>
 	</body>
 </html>

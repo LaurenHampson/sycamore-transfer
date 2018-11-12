@@ -40,12 +40,10 @@ public class GetUserPhotos extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@SuppressWarnings("deprecation")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("GET Request Received: Retrieving user's photos)");
 		//get email of current user
-		//String username = (String) request.getSession().getAttribute("UserName");
-		String username = "Kousheyo";
+		String username = (String) request.getSession().getAttribute("UserName");
 		
 		//interact with database
 		Connection conn = null;
