@@ -45,8 +45,7 @@ public class SignInServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("POST request: attempting to sign in user");
-		//get username, email, and password
-		String email = request.getParameter("email");
+		//get username and password
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String error_msg = "no_error";
@@ -57,7 +56,7 @@ public class SignInServlet extends HttpServlet {
 		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=password&useSSL=false");
 			sqlStatement = conn.createStatement();
 			
 			//hash password
@@ -77,7 +76,7 @@ public class SignInServlet extends HttpServlet {
 			}
 			
 			//check if username and password combo is already in database
-			rs = sqlStatement.executeQuery("SELECT * from Users where username='" + email + "'"
+			rs = sqlStatement.executeQuery("SELECT * from Users where username='" + username + "'"
 					+ "AND password='" + password_hash + "'");
 			if (!rs.next()) {
 				//user is not in database
@@ -107,14 +106,13 @@ public class SignInServlet extends HttpServlet {
 
 		//return the error message
 		//if no error, string returned is "no_error"
-		if(error_msg.equals("no_error")) {
-			String nextPage = "/about.jsp";
-			RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextPage);
-			dispatch.forward(request,response);
-			return;
+		String nextPage = "/about.jsp";
+		if(!error_msg.equals("no_error")) {
+			nextPage = "/Login.jsp";
+			request.setAttribute("error", error_msg);
 		}
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(error_msg);
+		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextPage);
+		dispatch.forward(request,response);
 	}
 
 }
