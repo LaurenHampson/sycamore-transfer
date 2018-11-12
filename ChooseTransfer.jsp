@@ -20,7 +20,7 @@
 			a.download = inputFile;
 			document.body.appendChild(a);
 			a.click();
-			//runStyleTransfer();
+			runStyleTransfer();
 			document.body.removeChild(a);
 		    
 		}
@@ -41,14 +41,15 @@
 		}
 		
 		function runStyleTransfer() {
-			var request_str = "PythonServlet?";
-			request_str += "input=" + inputFile;
+			//var request_str = "PythonServlet?";
+			var request_str = "input=" + inputFile;
 			request_str += "&style=" + style;
 			request_str += "&output=output.png";
 			console.log("about to run");
 			var xhttp = new XMLHttpRequest();
-			xhttp.open("GET", request_str, false);
-			xhttp.send();
+			xhttp.open("POST", "PythonServlet", true);
+			xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhttp.send(request_str);
 		}
 	    
 		</script>
@@ -74,18 +75,18 @@
 			</div>
 			<div id="stylebox" style="width: 49.5%; float:left;">
 				<div id ="styleset">
-					<a onclick="selectedStyle('./styles/adam.jpg');"><img height=100px width=100px src="./styles/adam.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/americangothic.jpg');"><img height=100px width=100px src="./styles/americangothic.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/bobross.jpg');"><img height=100px width=100px src="./styles/bobross.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/gottlob.jpg');"><img height=100px width=100px src="./styles/gottlob.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/greatwave.jpg');"><img height=100px width=100px src="./styles/greatwave.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/impressionism.jpg');"><img height=100px width=100px src="./styles/impressionism.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/monalisa.jpg');"><img height=100px width=100px src="./styles/monalisa.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/paris.png');"><img height=100px width=100px src="./styles/paris.png" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/picasso.jpg');"><img height=100px width=100px src="./styles/picasso.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/scream.jpg');"><img height=100px width=100px src="./styles/scream.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/starrynight.jpg');"><img height=100px width=100px src="./styles/starrynight.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
-					<a onclick="selectedStyle('./styles/sundayafternoon.jpg');"><img height=100px width=100px src="./styles/sundayafternoon.jpg" tabindex="1" onfocus="myFunction(this)"/></a>
+					<a onclick="selectedStyle('./styles/adam.jpg');"><img height=100px width=100px src="./styles/adam.jpg" tabindex="1"/></a>
+					<a onclick="selectedStyle('./styles/americangothic.jpg');"><img height=100px width=100px src="./styles/americangothic.jpg" tabindex="1"/></a>
+					<a onclick="selectedStyle('./styles/bobross.jpg');"><img height=100px width=100px src="./styles/bobross.jpg" tabindex="1"/></a>
+					<a onclick="selectedStyle('./styles/gottlob.jpg');"><img height=100px width=100px src="./styles/gottlob.jpg" tabindex="1" /></a>
+					<a onclick="selectedStyle('./styles/greatwave.jpg');"><img height=100px width=100px src="./styles/greatwave.jpg" tabindex="1" /></a>
+					<a onclick="selectedStyle('./styles/impressionism.jpg');"><img height=100px width=100px src="./styles/impressionism.jpg" tabindex="1" /></a>
+					<a onclick="selectedStyle('./styles/monalisa.jpg');"><img height=100px width=100px src="./styles/monalisa.jpg" tabindex="1" /></a>
+					<a onclick="selectedStyle('./styles/paris.png');"><img height=100px width=100px src="./styles/paris.png" tabindex="1" /></a>
+					<a onclick="selectedStyle('./styles/picasso.jpg');"><img height=100px width=100px src="./styles/picasso.jpg" tabindex="1" /></a>
+					<a onclick="selectedStyle('./styles/scream.jpg');"><img height=100px width=100px src="./styles/scream.jpg" tabindex="1" /></a>
+					<a onclick="selectedStyle('./styles/starrynight.jpg');"><img height=100px width=100px src="./styles/starrynight.jpg" tabindex="1" /></a>
+					<a onclick="selectedStyle('./styles/sundayafternoon.jpg');"><img height=100px width=100px src="./styles/sundayafternoon.jpg" tabindex="1" /></a>
 				</div>
 			</div>
 		</div>
