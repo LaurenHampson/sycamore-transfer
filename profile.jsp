@@ -8,6 +8,41 @@
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
 	</head>
+	<script>
+	window.onload = function(){
+		var xhttp = new XMLHttpRequest();
+		var URL = "http://localhost:8080/Project/GetUserPhotos";
+		xhttp.open("GET", URL, true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.addEventListener("load", updatePhotos);
+		xhttp.send();
+	}
+		
+	function updatePhotos() {
+		var jsonStr = this.responseText;
+		var photoStream = JSON.parse(jsonStr);
+		var streamArray = photoStream.streamArray;
+		for (var i in streamArray) {
+			//extract data from stream object
+			var photoPair = streamArray[i];
+			var imageID = photoPair.imageID;
+			var originalPhotoPath = photoPair.originalPhotoPath;
+			var newPhotoPath = photoPair.newPhotoPath;
+			var numLikes = photoPair.numLikes;
+			var likedByCurrUser = photoPair.likedByCurrUser;
+			//var TimeStamp = photoPair.
+			//display photos to the page
+			document.getElementById("myimages").innerHTML += "<p>5 minutes ago<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imglink=" + originalPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imglink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><input id='like' type='submit' value='Like' style='height: 30px; width: 200px; ' onclick='Like(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span>";
+		}
+	}
+	function Like(imageID){
+		var xhttp = new XMLHttpRequest();
+		var URL = "http://localhost:8080/Project/GetGlobalFeed?imageID=" + imageID;
+		xhttp.open("GET", URL, true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send();
+	}
+	</script>
 	<body>
 		<div class="topnav">
 		  <a href="./about.jsp">About</a>
@@ -21,17 +56,6 @@
 		<div class="column middle">
 			<h1 id="profilepage" style="font-family:Pacifico;">My Pictures</h1>
 			<div id="myimages" style="display: block; margin-left: auto; margin-right: auto; width:605px">
-				<!-- CODE FOR TOMMY TO SEND FROM DATABASE - ASK TOMMY HOW THEY WANT IMAGES SENT THEN ADD LINK FOR IMAGES TO OUTPUT.JSP-->
-				<p>5 minutes ago<p>
-				<div id="myimagesets" style="display: block; margin-left: auto; margin-right: auto; width:605px">
-					<a href="./output.jsp?imgurl=titleimage1.jpg"><img id = "myimg1" src="titleimage1.jpg" style="height: 300px; width: 300px;"></a>
-					<a href="./output.jsp?imgurl=titleimage1.jpg"><img id = "myimg2" src="titleimage2.png" style="height: 300px; width: 300px;"></a>
-				</div><br />
-				<p>10 minutes ago<p>
-				<div id="myimagesets" style="display: block; margin-left: auto; margin-right: auto; width:605px">
-					<a href="./output.jsp?imgurl=titleimage1.jpg"><img id = "myimg1" src="titleimage1.jpg" style="height: 300px; width: 300px;"></a>
-					<a href="./output.jsp?imgurl=titleimage1.jpg"><img id = "myimg2" src="titleimage2.png" style="height: 300px; width: 300px;"></a>
-				</div>
 			</div>
 		</div>
 		<div class="column side">

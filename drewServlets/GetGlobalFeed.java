@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 /**
  * Servlet implementation class GetGlobalFeed
  */
@@ -47,7 +49,7 @@ public class GetGlobalFeed extends HttpServlet {
 		stream.streamArray = new ArrayList<PhotoPair>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=password&useSSL=false");
 			sqlStatement = conn.createStatement();
 			
 			//check is email is already in database

@@ -55,6 +55,7 @@ body{
 p{
 	font: 100% Lucida Sans, Verdana;
 	color: #E26B2E;
+	font-size:20px;
 }
 
 #sycamore{
@@ -91,6 +92,19 @@ p{
 	display:inline-block;
 	background-color: orange;
 }
+
+#like {
+	position: relative;
+	height:25px;
+	background-color: #E26B2E;
+	color: white;
+	border: 1px solid black;
+	font: 100% Lucida Sans, American Typewriter;
+	font-size:20px;
+	padding-left: 5px;
+	display: inline-block;
+}
+
 #uploadbox{
 	float:left;
 	width:49.5%;

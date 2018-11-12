@@ -1,21 +1,21 @@
 
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
+
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class GetUserPhotos
@@ -38,7 +38,8 @@ public class GetUserPhotos extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("GET Request Received: Retrieving user's photos)");
 		//get email of current user
-		String username = (String) request.getSession().getAttribute("UserName");
+		//String username = (String) request.getSession().getAttribute("UserName");
+		String username = "Kousheyo";
 		
 		//interact with database
 		Connection conn = null;
@@ -46,9 +47,10 @@ public class GetUserPhotos extends HttpServlet {
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		PhotoStream stream = new PhotoStream();
+		stream.streamArray = new ArrayList<PhotoPair>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=password&useSSL=false");
 			sqlStatement = conn.createStatement();
 			
 			//check is email is already in database
@@ -70,6 +72,10 @@ public class GetUserPhotos extends HttpServlet {
 						likedByCurrUser = true;
 					}
 				}
+				
+				System.out.println(imageUsername);
+				System.out.println(oldImagePath);
+				System.out.println(newImagePath);
 				PhotoPair pair = new PhotoPair();
 				pair.imageID = imageID;
 				pair.user = imageUsername;
@@ -77,9 +83,9 @@ public class GetUserPhotos extends HttpServlet {
 				pair.newPhotoPath = newImagePath;
 				pair.numLikes = likeCount;
 				pair.likedByCurrUser = likedByCurrUser;
+				//pair.timeStamp = imageTimeStamp;
 				stream.streamArray.add(pair);
 			}
-			
 		} catch (SQLException sqle) {
 			System.out.println (sqle.getMessage());
 		} catch (ClassNotFoundException cnfe) {
