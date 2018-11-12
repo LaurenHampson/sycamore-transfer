@@ -1,6 +1,7 @@
 package python;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import email.EmailUser;
 
-@WebServlet("/Python")
+@WebServlet("/PythonServlet")
 public class PythonServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -20,16 +21,18 @@ public class PythonServlet extends HttpServlet
 	protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String style = request.getParameter("style");
+		style = "WebContent/" + style.substring(2);
 		String input = request.getParameter("input");
-		input = "C:\\Users\\tommy\\Downloads" + input;
+		input = "C:\\Users\\tommy\\Downloads\\" + input;
 		String output = request.getParameter("output");
 		System.out.println(style);
 		System.out.println(input);
 		System.out.println(output);
 		//String email = (String)request.getSession().getAttribute("Email");
+		String email = "kousheyk@usc.edu";
 		
-		//PythonThread p = new PythonThread(input, style, output, email);
-		//p.start();
+		PythonThread p = new PythonThread(input, style, output, email);
+		p.start();
 	}
 	
 	/*public static void main(String[] args) 
@@ -59,10 +62,10 @@ class PythonThread extends Thread
 		EmailUser user = new EmailUser(email, output);
 		user.sendStartMessage();
 		try {
-			//ProcessBuilder pb = new ProcessBuilder("python", "main.py", input, style, output);
-			//pb.directory(new File("C:\\Users\\tommy\\Desktop\\eclipse-workspace\\SycamoreTransfer"));
-			Process p = Runtime.getRuntime().exec(command, null, null);
-			//Process p = pb.start();
+			ProcessBuilder pb = new ProcessBuilder("python", "main.py", input, style, output);
+			pb.directory(new File("C:\\Users\\tommy\\Desktop\\eclipse-workspace\\SycamoreTransfer"));
+			//Process p = Runtime.getRuntime().exec("pwd", null, null);
+			Process p = pb.start();
 			BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String s = "";
 			while((s = stdInput.readLine()) != null) {
