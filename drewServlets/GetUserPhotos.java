@@ -2,12 +2,17 @@
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +40,7 @@ public class GetUserPhotos extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("deprecation")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("GET Request Received: Retrieving user's photos)");
 		//get email of current user
@@ -44,6 +50,7 @@ public class GetUserPhotos extends HttpServlet {
 		//interact with database
 		Connection conn = null;
 		Statement sqlStatement = null;
+		Statement sqlStatement2 = null;
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		PhotoStream stream = new PhotoStream();
@@ -62,7 +69,8 @@ public class GetUserPhotos extends HttpServlet {
 				String oldImagePath = rs.getString(3);
 				String newImagePath = rs.getString(4);
 				Timestamp imageTimeStamp = rs.getTimestamp(5);
-				rs2 = sqlStatement.executeQuery("SELECT * from ImageLikes where imageID='" + imageID + "'");
+				sqlStatement2 = conn.createStatement();
+				rs2 = sqlStatement2.executeQuery("SELECT * from ImageLikes where imageID='" + imageID + "'");
 				boolean likedByCurrUser = false;
 				int likeCount = 0;
 				while (rs2.next()) {
@@ -72,10 +80,16 @@ public class GetUserPhotos extends HttpServlet {
 						likedByCurrUser = true;
 					}
 				}
+				Date date = new Date(imageTimeStamp.getTime());
+				SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+				sdf.setTimeZone(TimeZone.getTimeZone("GMT-07:00"));
+				String formattedDate = sdf.format(date);
+				formattedDate = formattedDate.substring(0, 10) + "T" + formattedDate.substring(11, 19);
 				
-				System.out.println(imageUsername);
-				System.out.println(oldImagePath);
-				System.out.println(newImagePath);
+				LocalDateTime currentTime = LocalDateTime.now();
+				LocalDateTime imagetime = LocalDateTime.parse(formattedDate);
+				
+				Duration d = Duration.between(imagetime , currentTime);
 				PhotoPair pair = new PhotoPair();
 				pair.imageID = imageID;
 				pair.user = imageUsername;
@@ -83,7 +97,16 @@ public class GetUserPhotos extends HttpServlet {
 				pair.newPhotoPath = newImagePath;
 				pair.numLikes = likeCount;
 				pair.likedByCurrUser = likedByCurrUser;
-				//pair.timeStamp = imageTimeStamp;
+				
+				if(d.toMinutes() > 60) {
+					if(d.toHours() > 24) {
+						pair.timediff = "" + d.toDays() + " days ago";
+					} else {
+						pair.timediff = "" + d.toHours() + " hours ago";
+					}
+				} else {
+					pair.timediff = "" + d.toMinutes() + " minutes ago";
+				}
 				stream.streamArray.add(pair);
 			}
 		} catch (SQLException sqle) {

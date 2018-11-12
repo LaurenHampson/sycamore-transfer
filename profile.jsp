@@ -30,17 +30,39 @@
 			var newPhotoPath = photoPair.newPhotoPath;
 			var numLikes = photoPair.numLikes;
 			var likedByCurrUser = photoPair.likedByCurrUser;
-			//var TimeStamp = photoPair.
+			var timediff = photoPair.timediff;
 			//display photos to the page
-			document.getElementById("myimages").innerHTML += "<p>5 minutes ago<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imglink=" + originalPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imglink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><input id='like' type='submit' value='Like' style='height: 30px; width: 200px; ' onclick='Like(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span>";
+			if(likedByCurrUser){
+				document.getElementById("myimages").innerHTML += "<p>" + timediff + "<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imglink=" + originalPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imglink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><div id='likebutton" + imageID + "'><input id='unlike' type='submit' value='Unlike' style='height: 30px; width: 200px; ' onclick='Unlike(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span></div>";
+			} else{
+				document.getElementById("myimages").innerHTML += "<p>" + timediff + "<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imglink=" + originalPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imglink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><div id='likebutton" + imageID + "'><input id='like' type='submit' value='Like' style='height: 30px; width: 200px; ' onclick='Like(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span></div>";
+			}
 		}
 	}
 	function Like(imageID){
 		var xhttp = new XMLHttpRequest();
-		var URL = "http://localhost:8080/Project/GetGlobalFeed?imageID=" + imageID;
+		console.log(imageID);
+		var URL = "http://localhost:8080/Project/ChangeLikeStatus?imageID=" + imageID;
+		console.log(URL);
 		xhttp.open("GET", URL, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send();
+		xhttp.onreadystatechange = function(){
+			numLikes = this.responseText;
+			document.getElementById("likebutton" + imageID).innerHTML = "<input id='unlike' type='submit' value='Unlike' style='height: 30px; width: 200px; ' onclick='Unlike(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span>";				
+		}
+	}
+	function Unlike(imageID){
+		var xhttp = new XMLHttpRequest();
+		console.log(imageID);
+		var URL = "http://localhost:8080/Project/ChangeLikeStatus?imageID=" + imageID;
+		xhttp.open("GET", URL, true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send();
+		xhttp.onreadystatechange = function(){
+			numLikes = this.responseText;
+			document.getElementById("likebutton" + imageID).innerHTML = "<input id='like' type='submit' value='Like' style='height: 30px; width: 200px; ' onclick='Like(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span>";				
+		}
 	}
 	</script>
 	<body>

@@ -1,4 +1,3 @@
-drop DATABASE if exists UserProfiles;
 CREATE DATABASE UserProfiles;
 USE UserProfiles;
 CREATE TABLE Users (
@@ -10,7 +9,6 @@ CREATE TABLE Users (
 create table Images (
     imageID INT(11) primary key auto_increment,
     username VARCHAR(50) NOT NULL,
-    #foreign key fkUsername (username) references Users(username),
     old_image VARCHAR(100) NOT NULL,
     new_image VARCHAR(100) NOT NULL,
     creationTime TIMESTAMP NOT NULL
@@ -18,6 +16,6 @@ create table Images (
 
 create table ImageLikes (
     imageID INT(11) NOT NULL,
-    #foreign key fkImageID (imageID) references Images(imageID),
-    userWhoLikedImage VARCHAR(100) NOT NULL
+    userWhoLikedImage VARCHAR(100) NOT NULL,
+    unique(imageID, userWhoLikedImage)
 );
