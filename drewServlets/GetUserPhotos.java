@@ -38,7 +38,7 @@ public class GetUserPhotos extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("GET Request Received: Retrieving user's photos)");
 		//get email of current user
-		String username = request.getParameter("username");
+		String username = (String) request.getSession().getAttribute("UserName");
 		
 		//interact with database
 		Connection conn = null;
@@ -48,7 +48,7 @@ public class GetUserPhotos extends HttpServlet {
 		PhotoStream stream = new PhotoStream();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=root&useSSL=false");
 			sqlStatement = conn.createStatement();
 			
 			//check is email is already in database
