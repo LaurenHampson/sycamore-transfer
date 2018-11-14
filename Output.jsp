@@ -167,9 +167,8 @@
 		</div>
 		<div class="column middle">
 			<h1 id="feedpage2" style="font-family:Pacifico;">Style Transferred!</h1>
-			
-			<div id = "main2"> <img id = "image" src = "" >
-			<br></br>
+			<div id = "main2"> <img id = "image" src = "" height = "50%" width = "50%">
+			<br/>
 				<span><button type = "button" id = "bt1" onclick = "printImage(); return false;">Print</button>
 			
 				<a id = "image2" href="" download = "myimage.jpg"><button type = "button" id = "bt2" >Download</button></a>
