@@ -17,7 +17,7 @@
 			document.getElementById("myimages").innerHTML += "<p style='font-size:19.9px;'>Create an account to see other users' style-transferred pics!<p>";
 		} else {
 			var xhttp = new XMLHttpRequest();
-			var URL = "http://localhost:8080/Project/GetGlobalFeed";
+			var URL = "http://localhost:8080/SycamoreTransfer/GetGlobalFeed";
 			xhttp.open("GET", URL, true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.addEventListener("load", updatePhotos);
@@ -52,7 +52,7 @@
 	function Like(imageID){
 		var xhttp = new XMLHttpRequest();
 		console.log(imageID);
-		var URL = "http://localhost:8080/Project/ChangeLikeStatus?imageID=" + imageID;
+		var URL = "http://localhost:8080/SycamoreTransfer/ChangeLikeStatus?imageID=" + imageID;
 		console.log(URL);
 		xhttp.open("GET", URL, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -65,7 +65,7 @@
 	function Unlike(imageID){
 		var xhttp = new XMLHttpRequest();
 		console.log(imageID);
-		var URL = "http://localhost:8080/Project/ChangeLikeStatus?imageID=" + imageID;
+		var URL = "http://localhost:8080/SycamoreTransfer/ChangeLikeStatus?imageID=" + imageID;
 		xhttp.open("GET", URL, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send();

@@ -55,7 +55,7 @@ public class GetUserPhotos extends HttpServlet {
 		stream.streamArray = new ArrayList<PhotoPair>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=password&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=root&useSSL=false");
 			sqlStatement = conn.createStatement();
 			
 			//check is email is already in database
@@ -80,12 +80,16 @@ public class GetUserPhotos extends HttpServlet {
 				}
 				Date date = new Date(imageTimeStamp.getTime());
 				SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
-				sdf.setTimeZone(TimeZone.getTimeZone("GMT-07:00"));
+				sdf.setTimeZone(TimeZone.getTimeZone("GMT-06:00"));
 				String formattedDate = sdf.format(date);
 				formattedDate = formattedDate.substring(0, 10) + "T" + formattedDate.substring(11, 19);
 				
-				LocalDateTime currentTime = LocalDateTime.now();
-				LocalDateTime imagetime = LocalDateTime.parse(formattedDate);
+				Date date2 = new Date(System.currentTimeMillis());
+				//date2.getTime();
+				String formattedDate2 = sdf.format(date2);
+				formattedDate2 = formattedDate2.substring(0, 10) + "T" + formattedDate2.substring(11, 19);
+				LocalDateTime currentTime = LocalDateTime.parse(formattedDate2);
+				LocalDateTime imagetime = LocalDateTime.parse(formattedDate); 
 				
 				Duration d = Duration.between(imagetime , currentTime);
 				PhotoPair pair = new PhotoPair();

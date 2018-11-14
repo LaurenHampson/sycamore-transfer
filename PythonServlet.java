@@ -29,16 +29,18 @@ public class PythonServlet extends HttpServlet
 		String style = request.getParameter("style");
 		style = "WebContent/" + style.substring(2);
 		String input = request.getParameter("input");
-		input = "C:\\Users\\tommy\\Downloads\\" + input; //CHANGE FOR PRESENTATION
+		//input = "C:\\Users\\tommy\\Downloads\\" + input; //CHANGE FOR PRESENTATION
 		String output = request.getParameter("output");
 		System.out.println(style);
 		System.out.println(input);
 		System.out.println(output);
 		String email = (String)request.getSession().getAttribute("Email");
 		System.out.println("email: " + email);
-		PythonThread p = new PythonThread(input, style, output, email);
+		PythonThread p = new PythonThread("./WebContent/" + input, style, "./WebContent/" + output, email);
 		p.start();
 		
+		input = "./" + input;
+		output = "./" + output;
 		String username = (String)request.getSession().getAttribute("UserName");
 		if (email.equals("guest"))
 		{

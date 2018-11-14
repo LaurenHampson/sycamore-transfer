@@ -16,7 +16,7 @@
 			updatePhotosGuest();
 		} else {
 			var xhttp = new XMLHttpRequest();
-			var URL = "http://localhost:8080/Project/GetUserPhotos";
+			var URL = "http://localhost:8080/SycamoreTransfer/GetUserPhotos";
 			xhttp.open("GET", URL, true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.addEventListener("load", updatePhotos);
@@ -64,7 +64,7 @@
 	function Like(imageID){
 		var xhttp = new XMLHttpRequest();
 		console.log(imageID);
-		var URL = "http://localhost:8080/Project/ChangeLikeStatus?imageID=" + imageID;
+		var URL = "http://localhost:8080/SycamoreTransfer/ChangeLikeStatus?imageID=" + imageID;
 		console.log(URL);
 		xhttp.open("GET", URL, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -77,7 +77,7 @@
 	function Unlike(imageID){
 		var xhttp = new XMLHttpRequest();
 		console.log(imageID);
-		var URL = "http://localhost:8080/Project/ChangeLikeStatus?imageID=" + imageID;
+		var URL = "http://localhost:8080/SycamoreTransfer/ChangeLikeStatus?imageID=" + imageID;
 		xhttp.open("GET", URL, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send();

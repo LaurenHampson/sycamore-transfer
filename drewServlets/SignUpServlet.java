@@ -59,7 +59,7 @@ public class SignUpServlet extends HttpServlet {
 		try {
 			System.out.println("heyo");
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=password&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserProfiles?user=root&password=root&useSSL=false");
 			sqlStatement = conn.createStatement();
 			
 			//check is email is already in database

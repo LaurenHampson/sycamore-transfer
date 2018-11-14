@@ -63,7 +63,7 @@
 			//var request_str = "PythonServlet?";
 			var request_str = "input=" + inputFile;
 			request_str += "&style=" + style;
-			request_str += "&output=./output.png";
+			request_str += "&output=output.png";
 			console.log("about to run");
 			var xhttp = new XMLHttpRequest();
 			xhttp.open("POST", "PythonServlet", true);

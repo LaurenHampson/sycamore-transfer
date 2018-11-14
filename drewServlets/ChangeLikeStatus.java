@@ -36,8 +36,9 @@ public class ChangeLikeStatus extends HttpServlet {
 		System.out.println("POST Request Received: Changing like status");
 		//get email of current user
 		String username = (String) request.getSession().getAttribute("UserName");
-		String imageIdStr = (String) request.getAttribute("imageID");
+		String imageIdStr = request.getParameter("imageID");
 		int imageID = -1;
+		System.out.println("test: " + imageIdStr);
 		try {
 			imageID = Integer.parseInt(imageIdStr);
 		} catch (NumberFormatException e) {
