@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.servlet.ServletException;
@@ -28,29 +29,26 @@ public class PythonServlet extends HttpServlet
 		String style = request.getParameter("style");
 		style = "WebContent/" + style.substring(2);
 		String input = request.getParameter("input");
-		input = "C:\\Users\\tommy\\Downloads\\" + input;
+		input = "C:\\Users\\tommy\\Downloads\\" + input; //CHANGE FOR PRESENTATION
 		String output = request.getParameter("output");
 		System.out.println(style);
 		System.out.println(input);
 		System.out.println(output);
 		String email = (String)request.getSession().getAttribute("Email");
-		//String email = "kousheyk@usc.edu";
 		System.out.println("email: " + email);
 		PythonThread p = new PythonThread(input, style, output, email);
 		p.start();
 		
 		String username = (String)request.getSession().getAttribute("UserName");
-		insertDB(username, input, output);
+		if (email.equals("guest"))
+		{
+			ArrayList<String> guestImages = (ArrayList<String>) request.getSession().getAttribute("GuestList");
+			guestImages.add(input);
+			guestImages.add(output);
+		}
+		else
+			insertDB(username, input, output);
 	}
-	
-	/*public static void main(String[] args) 
-	{
-		String input = "miller.jpg";
-		String style = "picasso.jpg";
-		String output = "output.jpg";
-		PythonThread p = new PythonThread(input, style, output, "tommyacin@hotmail.com");
-		p.start();
-	}*/
 	
 	public void insertDB (String username, String input, String output)
 	{
@@ -61,9 +59,9 @@ public class PythonServlet extends HttpServlet
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UserProfiles?user=root&password=root&useSSL=false");
 			ps = conn.prepareStatement("INSERT IGNORE INTO Images (username, old_image, new_image, creationTime) values (?, ?, ?, ?);");
-			ps.setString(1,  username);
-			ps.setString(2,  input);
-			ps.setString(3,  output);
+			ps.setString(1, username);
+			ps.setString(2, input);
+			ps.setString(3, output);
 			ps.setTimestamp(4, new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
 			ps.execute();
 		}
