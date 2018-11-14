@@ -40,9 +40,9 @@
 			var timediff = photoPair.timediff;
 			//display photos to the page
 			if(likedByCurrUser){
-				document.getElementById("myimages").innerHTML += "<p>" + timediff + "<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imgLink=" + originalPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imgLink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><div id='likebutton" + imageID + "'><input id='unlike' type='submit' value='Unlike' style='height: 30px; width: 200px; ' onclick='Unlike(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span></div>";
+				document.getElementById("myimages").innerHTML += "<p>" + timediff + "<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imgLink=" + newPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imgLink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><div id='likebutton" + imageID + "'><input id='unlike' type='submit' value='Unlike' style='height: 30px; width: 200px; ' onclick='Unlike(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span></div>";
 			} else{
-				document.getElementById("myimages").innerHTML += "<p>" + timediff + "<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imgLink=" + originalPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imgLink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><div id='likebutton" + imageID + "'><input id='like' type='submit' value='Like' style='height: 30px; width: 200px; ' onclick='Like(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span></div>";
+				document.getElementById("myimages").innerHTML += "<p>" + timediff + "<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imgLink=" + newPhotoPath + "'><img id = 'myimg1' src='" + originalPhotoPath + "' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imgLink=" + newPhotoPath + "'><img id = 'myimg2' src='" + newPhotoPath + "' style='height: 300px; width: 300px;'></a></div><br /><div id='likebutton" + imageID + "'><input id='like' type='submit' value='Like' style='height: 30px; width: 200px; ' onclick='Like(" + imageID + ")'></input> <span style='font: 100% Lucida Sans, Verdana; color: #E26B2E;'>" + numLikes + " people like this</span></div>";
 			}
 		}
 		if(streamArray.length == 0){
@@ -52,8 +52,6 @@
 	function updatePhotosGuest() {
 		<%@ page import="java.util.*" %>
 		<% ArrayList<String> profile = (ArrayList<String>) request.getSession().getAttribute("GuestList");
-		profile.add("./titleimage1.jpg");
-		profile.add("./titleimage2.png");
 			for(int i = 0; i < profile.size(); i+=2){
 				%> document.getElementById("myimages").innerHTML += "<p>Guest created this sometime ago<p><div id='myimagesets' style='display: block; margin-left: auto; margin-right: auto; width:605px'><a href='./Output.jsp?imglink='<%= profile.get(i)%>'><img id = 'myimg1' src='<%= profile.get(i)%>' style='height: 300px; width: 300px;'></a> <a href='./Output.jsp?imglink='<%= profile.get(i+1)%>'><img id = 'myimg2' src='<%= profile.get(i+1)%>' style='height: 300px; width: 300px;'></a></div><br />";<%
 			}

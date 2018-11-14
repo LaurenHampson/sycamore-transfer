@@ -67,15 +67,15 @@ p{
 
 #main{
 	text-align: center;
-	color: balck;
-	font-family: Helvetica;
+	color: black;
+	font: 100% Lucida Sans, American Typewriter;
 	font-size:55px;
 }
 
 #main input{
 	width: 30%;
 	color: black;
-	font-family: Verdana;
+	font: 100% Lucida Sans, American Typewriter;
 	font-size:20px;
 	padding: 5px 5px;
 	box-sizing: border-box;
