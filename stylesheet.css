@@ -38,7 +38,7 @@ body{
 	display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     width: 690px;
 	font-size: 80px;
 	color: #E26B2E;
@@ -67,15 +67,15 @@ p{
 
 #main{
 	text-align: center;
-	color: balck;
-	font-family: Helvetica;
+	color: black;
+	font: 100% Lucida Sans, American Typewriter;
 	font-size:55px;
 }
 
 #main input{
 	width: 30%;
 	color: black;
-	font-family: Verdana;
+	font: 100% Lucida Sans, American Typewriter;
 	font-size:20px;
 	padding: 5px 5px;
 	box-sizing: border-box;
@@ -98,6 +98,18 @@ p{
 	height:25px;
 	background-color: #E26B2E;
 	color: white;
+	border: 1px solid black;
+	font: 100% Lucida Sans, American Typewriter;
+	font-size:20px;
+	padding-left: 5px;
+	display: inline-block;
+}
+
+#unlike {
+	position: relative;
+	height:25px;
+	background-color: white;
+	color: #E26B2E;
 	border: 1px solid black;
 	font: 100% Lucida Sans, American Typewriter;
 	font-size:20px;
@@ -136,7 +148,7 @@ p{
 	height:50px; 
 	margin-left: 45%;
 	margin-right: 45%;
-	margin-top: 40px;
+	margin-top: 0px;
 }
 
 @media screen and (max-width:1229px) {

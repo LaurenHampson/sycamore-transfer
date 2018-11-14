@@ -6,5 +6,5 @@ public class PhotoPair {
 	public String newPhotoPath;
 	public int numLikes;
 	public boolean likedByCurrUser;
-	//public String timeStamp;
+	public String timediff;
 }
