@@ -21,9 +21,9 @@
 				<h1 id="aboutpage" style="font-family:Pacifico; color: #E26B2E;">About Style Transfer</h1>
 				<p>Style transfer is the technique of recomposing images in the style of other images. These were mostly created using <a href="https://github.com/jcjohnson/neural-style">Justin Johnson’s code</a> based on the <a href="https://arxiv.org/abs/1508.06576">paper by Gatys, Ecker, and Bethge</a> demonstrating a method for restyling images using convolutional neural networks. Instructions <a href="https://gist.github.com/genekogan/d61c8010d470e1dbe15d">here</a>, and more details <a href="https://gitxiv.com/posts/jG46ukGod8R7Rdtud/a-neural-algorithm-of-artistic-style">here</a>. A gallery with all of these and more style transfers can be <a href="https://www.flickr.com/photos/genekogan/albums/72157658785675071">viewed here</a>.</p>
 				<p>Pablo Picasso <a href="https://www.youtube.com/watch?v=CkRS3wDg1xU">painting on glass in 1937</a>, restyled by works from his Blue, African, and Cubist periods respectively.</p>
-				<video width=90% autoplay muted loop>
+				<center><video width=90% autoplay muted loop>
 				<source src="./picasso-periods.mp4" type="video/mp4">
-				</video>
+				</video></center>
 			</div>
 			<div class="card">
 				<h1 id="aboutpage" style="font-family:Pacifico; color: #E26B2E;">About Machine Learning</h1>
@@ -31,50 +31,50 @@
 			</div>
 		</div>
 		<div class="column side">
-			<div class="card">
+			<div class="card" style=" align: center;">
 				<h1 id="aboutpage" style="font-family:Pacifico; color: #E26B2E;">The Team</h1>
-				<div id="teammember" style="width:45%; display:inline-block;">
-					<img src = "./titleimage1.jpg" style="width: 100px; height: 100px; border-radius:50%">
-					<p>Andrew Charters<p>
+				<div id="teammember" style="width:100%; display:inline-block;">
+					<center><img src = "./andrew.jpg" style="width: 200px; height: 200px; margin-right: auto; margin-left:auto; border-radius:50%"></center>
+					<center><p>Andrew Charters<p></center>
 				</div>
-				<div id="teammemberinfo" style="width:45%; display:inline-block;">
+				<!-- <div id="teammemberinfo" style="width:45%; display:inline-block;">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, <p>
+				</div> -->
+				<div id="teammember" style="width:100%; display:inline-block;">
+					<center><img src = "./ishan.jpg" style="width: 200px; height: 200px; margin-right: auto; margin-left:auto; border-radius:50%"></center>
+					<center><p>Ishan Shah<p><center>
 				</div>
-				<div id="teammember" style="width:45%; display:inline-block;">
-					<img src = "./titleimage1.jpg" style="width: 100px; height: 100px; border-radius:50%">
-					<p>Ishan Shah<p>
-				</div>
-				<div id="teammemberinfo" style="width:45%; display:inline-block;">
+				<!-- <div id="teammemberinfo" style="width:45%; display:inline-block;">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, <p>
+				</div> -->
+				<div id="teammember" style="width:100%; display:inline-block;">
+					<center><img src = "./kousheyo.jpg" style="width: 200px; height: 200px; margin-right: auto; margin-left:auto; border-radius:50%"></center>
+					<center><p>Kousheyo Kundu<p></center>
 				</div>
-				<div id="teammember" style="width:45%; display:inline-block;">
-					<img src = "./titleimage1.jpg" style="width: 100px; height: 100px; border-radius:50%">
-					<p>Kousheyo Kundu<p>
-				</div>
-				<div id="teammemberinfo" style="width:45%; display:inline-block;">
+				<!-- <div id="teammemberinfo" style="width:45%; display:inline-block;">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, <p>
+				</div> -->
+				<div id="teammember" style="width:100%; display:inline-block;">
+					<center><img src = "./lauren.jpg" style="width: 200px; height: 200px; margin-right: auto; margin-left:auto; border-radius:50%"></center>
+					<center><p>Lauren Hampson<p></center>
 				</div>
-				<div id="teammember" style="width:45%; display:inline-block;">
-					<img src = "./titleimage1.jpg" style="width: 100px; height: 100px; border-radius:50%">
-					<p>Lauren Hampson<p>
-				</div>
-				<div id="teammemberinfo" style="width:45%; display:inline-block;">
+				<!-- <div id="teammemberinfo" style="width:45%; display:inline-block;">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, <p>
+				</div> -->
+				<div id="teammember" style="width:100%; display:inline-block;">
+					<center><img src = "./tommy.jpg" style="width: 200px; height: 200px; margin-right: auto; margin-left:auto; border-radius:50%"></center>
+					<center><p>Tomas Acin<p></center>
 				</div>
-				<div id="teammember" style="width:45%; display:inline-block;">
-					<img src = "./titleimage1.jpg" style="width: 100px; height: 100px; border-radius:50%">
-					<p>Tommy Acin<p>
-				</div>
-				<div id="teammemberinfo" style="width:45%; display:inline-block;">
+				<!-- <div id="teammemberinfo" style="width:45%; display:inline-block;">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, <p>
+				</div> -->
+				<div id="teammember" style="width:100%; display:inline-block;">
+					<center><img src = "./titleimage1.jpg" style="width: 200px; height: 200px; margin-right: auto; margin-left:auto; border-radius:50%"></center>
+					<center><p>Zane Durante<p></center>
 				</div>
-				<div id="teammember" style="width:45%; display:inline-block;">
-					<img src = "./titleimage1.jpg" style="width: 100px; height: 100px; border-radius:50%">
-					<p>Zane Durante<p>
-				</div>
-				<div id="teammemberinfo" style="width:45%; display:inline-block;">
+				<!-- <div id="teammemberinfo" style="width:45%; display:inline-block;">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, <p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="footer">

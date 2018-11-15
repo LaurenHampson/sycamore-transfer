@@ -63,7 +63,9 @@
 			//var request_str = "PythonServlet?";
 			var request_str = "input=" + inputFile;
 			request_str += "&style=" + style;
-			request_str += "&output=output.png";
+			output_name = Math.random() * 1000; 
+			output_name = <%=request.getSession().getAttribute("UserName") %> + output_name; 
+			request_str += "&output=" + output_name + ".png";
 			console.log("about to run");
 			var xhttp = new XMLHttpRequest();
 			xhttp.open("POST", "PythonServlet", true);

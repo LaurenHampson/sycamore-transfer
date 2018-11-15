@@ -29,7 +29,7 @@
 		<strong><font color="red" size="15px"><%= error %></font></strong>
 		<form name="myform" method="POST" action="SignUpServlet">
 	      <input type="text" name="username" placeholder="Username"required/><br>
-	      <input type="text" name="email" placeholder = "Email"required/><br>
+	      <input type="email" name="email" placeholder = "Email"required/><br>
 	      <input type="password" name="password" placeholder = "Password" required minlength = "8" ><br>
 	     
 	      <input type="submit" name="submit" value="Create Account">  
