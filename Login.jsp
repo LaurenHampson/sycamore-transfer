@@ -45,7 +45,7 @@
 		<form id="login" method="POST" style="display: block; margin-left: auto; margin-right: auto; width:200px;" name="login" action="SignInServlet">
 			<input type="text" name="username" placeholder="Username" required><br /><br />
 			<input type="password" name="password" placeholder="Password" required ><br /><br />
-			<input type="submit" style="width:206px;" value="Sign In">
+			<input type="submit" style="width:206px; height:25px;" value="Sign In">
 		</form>
 		<button name="submit" style="width:10%; margin-top:20px; margin-left: 45%; margin-right: 45%;" onclick="createAccount();" >Create Account</button>
 		<button name="submit" style="width:10%; margin-top:20px; margin-left: 45%; margin-right: 45%;" onclick="useGuestAccount();" >Use Guest Account</button>
